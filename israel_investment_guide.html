@@ -1,0 +1,1434 @@
+<title>Инвестиции в Израиле</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+
+<style>
+:root {
+  --bg: #FAF8F4;
+  --surface: #FFFFFF;
+  --surface-alt: #F2EFEA;
+  --border: #DDD8CF;
+  --border-light: #EBE7E0;
+  --text: #2B3038;
+  --text-mid: #525A65;
+  --text-muted: #7D8590;
+  --text-faint: #A0A7B0;
+  --accent: #1A6B5A;
+  --accent-soft: rgba(26,107,90,0.08);
+  --accent-mid: rgba(26,107,90,0.15);
+  --amber: #B8872E;
+  --amber-soft: rgba(184,135,46,0.1);
+  --rose: #A34E4E;
+  --rose-soft: rgba(163,78,78,0.08);
+  --blue: #3D6E9E;
+  --blue-soft: rgba(61,110,158,0.08);
+  --green: #3D8B6E;
+  --green-soft: rgba(61,139,110,0.08);
+  --risk-low: #3D8B6E;
+  --risk-med: #B8872E;
+  --risk-high: #A34E4E;
+  --tag-bg: #F2EFEA;
+  --tag-border: #DDD8CF;
+  --shadow: 0 1px 3px rgba(43,48,56,0.05);
+  --shadow-hover: 0 2px 8px rgba(43,48,56,0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111418;
+    --surface: #1A1E24;
+    --surface-alt: #21262D;
+    --border: #30363D;
+    --border-light: #262C33;
+    --text: #E2E6EB;
+    --text-mid: #A8B1BC;
+    --text-muted: #7D8590;
+    --text-faint: #545D68;
+    --accent: #4DAF96;
+    --accent-soft: rgba(77,175,150,0.1);
+    --accent-mid: rgba(77,175,150,0.18);
+    --amber: #D4A245;
+    --amber-soft: rgba(212,162,69,0.12);
+    --rose: #D4706A;
+    --rose-soft: rgba(212,112,106,0.1);
+    --blue: #6B9FD4;
+    --blue-soft: rgba(107,159,212,0.1);
+    --green: #5AAF8E;
+    --green-soft: rgba(90,175,142,0.1);
+    --risk-low: #5AAF8E;
+    --risk-med: #D4A245;
+    --risk-high: #D4706A;
+    --tag-bg: #21262D;
+    --tag-border: #30363D;
+    --shadow: 0 1px 3px rgba(0,0,0,0.2);
+    --shadow-hover: 0 2px 8px rgba(0,0,0,0.25);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #111418;
+  --surface: #1A1E24;
+  --surface-alt: #21262D;
+  --border: #30363D;
+  --border-light: #262C33;
+  --text: #E2E6EB;
+  --text-mid: #A8B1BC;
+  --text-muted: #7D8590;
+  --text-faint: #545D68;
+  --accent: #4DAF96;
+  --accent-soft: rgba(77,175,150,0.1);
+  --accent-mid: rgba(77,175,150,0.18);
+  --amber: #D4A245;
+  --amber-soft: rgba(212,162,69,0.12);
+  --rose: #D4706A;
+  --rose-soft: rgba(212,112,106,0.1);
+  --blue: #6B9FD4;
+  --blue-soft: rgba(107,159,212,0.1);
+  --green: #5AAF8E;
+  --green-soft: rgba(90,175,142,0.1);
+  --risk-low: #5AAF8E;
+  --risk-med: #D4A245;
+  --risk-high: #D4706A;
+  --tag-bg: #21262D;
+  --tag-border: #30363D;
+  --shadow: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-hover: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+@media (max-width: 640px) {
+  .page { padding: 1.5rem 1rem 3rem; }
+}
+
+h1 {
+  font-family: 'Literata', Georgia, serif;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+  text-wrap: balance;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  margin-bottom: 2.5rem;
+  max-width: 55ch;
+}
+
+.section-title {
+  font-family: 'Literata', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent-mid);
+}
+
+.section-desc {
+  color: var(--text-mid);
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+  max-width: 58ch;
+}
+
+/* Quick-reference bar */
+.quickref {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.quickref-title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+}
+
+.quickref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.qr-item {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.qr-label {
+  font-size: 0.6875rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.qr-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 0.125rem;
+}
+
+/* Filter chips */
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.filter-chip {
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  border-radius: 100px;
+  padding: 0.375rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.filter-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-chip.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.filter-chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Instrument cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.15s;
+  overflow: hidden;
+}
+
+.card:hover { box-shadow: var(--shadow-hover); }
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.125rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.card-header:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.card-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  margin-top: 0.125rem;
+}
+
+.card-main { flex: 1; min-width: 0; }
+
+.card-name {
+  font-family: 'Literata', Georgia, serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.card-heb {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.0625rem;
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+.card-tags {
+  display: flex;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.125rem 0.5rem;
+  border-radius: 100px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.tag-risk-low { background: var(--green-soft); color: var(--risk-low); }
+.tag-risk-med { background: var(--amber-soft); color: var(--risk-med); }
+.tag-risk-high { background: var(--rose-soft); color: var(--risk-high); }
+.tag-tax-free { background: var(--accent-soft); color: var(--accent); }
+.tag-tax-benefit { background: var(--blue-soft); color: var(--blue); }
+.tag-locked { background: var(--amber-soft); color: var(--amber); }
+.tag-liquid { background: var(--green-soft); color: var(--green); }
+
+.card-toggle {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-faint);
+  transition: transform 0.2s;
+  margin-top: 0.375rem;
+}
+
+.card.open .card-toggle { transform: rotate(180deg); }
+
+.card-body {
+  display: none;
+  padding: 0 1.25rem 1.25rem;
+  padding-left: calc(1.25rem + 36px + 1rem);
+}
+
+.card.open .card-body { display: block; }
+
+@media (max-width: 640px) {
+  .card-body { padding-left: 1.25rem; }
+}
+
+.card-body p {
+  font-size: 0.875rem;
+  color: var(--text-mid);
+  margin-bottom: 0.75rem;
+  max-width: 58ch;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.detail-item {
+  padding: 0.625rem 0.75rem;
+  background: var(--surface-alt);
+  border-radius: 6px;
+}
+
+.detail-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  margin-bottom: 0.125rem;
+}
+
+.detail-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.detail-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.125rem;
+}
+
+.pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 500px) {
+  .pros-cons { grid-template-columns: 1fr; }
+}
+
+.pros-cons h4 {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.375rem;
+}
+
+.pros h4 { color: var(--risk-low); }
+.cons h4 { color: var(--risk-high); }
+
+.pros-cons ul {
+  list-style: none;
+  font-size: 0.8125rem;
+  color: var(--text-mid);
+}
+
+.pros-cons li {
+  padding: 0.1875rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.pros li::before {
+  content: '+';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--risk-low);
+}
+
+.cons li::before {
+  content: '\2212';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--risk-high);
+}
+
+/* Comparison table */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  min-width: 700px;
+}
+
+.comp-table thead th {
+  background: var(--surface-alt);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  text-align: left;
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  white-space: nowrap;
+}
+
+.comp-table tbody td {
+  font-size: 0.8125rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text);
+  vertical-align: top;
+}
+
+.comp-table tbody tr:last-child td { border-bottom: none; }
+
+.comp-table tbody td:first-child {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.comp-table .val-good { color: var(--risk-low); font-weight: 600; }
+.comp-table .val-mid { color: var(--risk-med); font-weight: 600; }
+.comp-table .val-bad { color: var(--risk-high); font-weight: 600; }
+
+.footnote {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  margin-top: 2rem;
+  line-height: 1.5;
+  max-width: 60ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+
+<div class="page">
+  <h1>Инвестиции в Израиле</h1>
+  <p class="subtitle">Сравнительный анализ всех основных инвестиционных инструментов: налоги, доходность, риски, ликвидность и для кого каждый подходит.</p>
+
+  <div class="quickref">
+    <div class="quickref-title">Ключевые ставки (2024-2025)</div>
+    <div class="quickref-grid">
+      <div class="qr-item">
+        <div class="qr-label">Ставка Банка Израиля</div>
+        <div class="qr-value">4.50%</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-label">Инфляция</div>
+        <div class="qr-value">~3.2%</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-label">Налог на прибыль</div>
+        <div class="qr-value">25%</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-label">S&P 500 (среднее)</div>
+        <div class="qr-value">~10%/год</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-label">TA-125 (среднее)</div>
+        <div class="qr-value">~8%/год</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter-chip active" data-filter="all" tabindex="0">Все</button>
+    <button class="filter-chip" data-filter="tax" tabindex="0">Налоговые льготы</button>
+    <button class="filter-chip" data-filter="liquid" tabindex="0">Ликвидные</button>
+    <button class="filter-chip" data-filter="pension" tabindex="0">Пенсионные</button>
+    <button class="filter-chip" data-filter="market" tabindex="0">Рыночные</button>
+    <button class="filter-chip" data-filter="safe" tabindex="0">Низкий риск</button>
+  </div>
+
+  <div id="cards">
+
+    <!-- Keren Hishtalmut -->
+    <div class="card" data-categories="tax,pension">
+      <div class="card-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-icon" style="background:var(--accent-soft);color:var(--accent)">&#9733;</div>
+        <div class="card-main">
+          <div class="card-name">Керен Хишталмут</div>
+          <div class="card-heb">קרן השתלמות</div>
+          <div class="card-tags">
+            <span class="tag tag-tax-free">Без налога</span>
+            <span class="tag tag-risk-med">Риск: средний</span>
+            <span class="tag tag-locked">Заморозка 6 лет</span>
+          </div>
+        </div>
+        <div class="card-toggle"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="card-body">
+        <p>Учебный фонд -- лучший инвестиционный инструмент в Израиле. Все доходы полностью освобождены от налогов после 6 лет. Можно выбрать трек инвестиций (акции, индексы, облигации).</p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-label">Ожидаемая доходность</div>
+            <div class="detail-value">7-10%/год</div>
+            <div class="detail-note">зависит от выбранного трека</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Налог</div>
+            <div class="detail-value" style="color:var(--accent)">0%</div>
+            <div class="detail-note">после 6 лет -- полностью</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Лимит (наёмный)</div>
+            <div class="detail-value">~20,520 ILS/год</div>
+            <div class="detail-note">работник + работодатель</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Ликвидность</div>
+            <div class="detail-value">Через 6 лет</div>
+            <div class="detail-note">после -- полная свобода</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Комиссии</div>
+            <div class="detail-value">0.3-1.2%/год</div>
+            <div class="detail-note">dmei nihul, торгуйтесь!</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Для кого</div>
+            <div class="detail-value">Все работающие</div>
+            <div class="detail-note">наёмные и ацмаим</div>
+          </div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Преимущества</h4>
+            <ul>
+              <li>0% налог на прибыль -- ничего лучше нет</li>
+              <li>Можно выбрать агрессивный трек (S&P 500)</li>
+              <li>Работодатель часто доплачивает 7.5%</li>
+              <li>После 6 лет -- снять или оставить расти</li>
+            </ul>
+          </div>
+          <div class="cons"><h4>Недостатки</h4>
+            <ul>
+              <li>Ограничение по сумме взносов</li>
+              <li>Заморозка 6 лет</li>
+              <li>Комиссии иногда завышены -- нужно торговаться</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pension -->
+    <div class="card" data-categories="tax,pension">
+      <div class="card-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-icon" style="background:var(--blue-soft);color:var(--blue)">&#9741;</div>
+        <div class="card-main">
+          <div class="card-name">Керен Пенсия</div>
+          <div class="card-heb">קרן פנסיה</div>
+          <div class="card-tags">
+            <span class="tag tag-tax-benefit">Налоговые вычеты</span>
+            <span class="tag tag-risk-med">Риск: средний</span>
+            <span class="tag tag-locked">До 60+</span>
+          </div>
+        </div>
+        <div class="card-toggle"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="card-body">
+        <p>Обязательное пенсионное накопление для наёмных работников. Включает страхование жизни и инвалидности. Выбираете трек инвестиций (маслул): консервативный, сбалансированный или агрессивный.</p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-label">Доходность</div>
+            <div class="detail-value">5-10%/год</div>
+            <div class="detail-note">маслул мениот = агрессивный</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Налог</div>
+            <div class="detail-value" style="color:var(--blue)">Вычеты</div>
+            <div class="detail-note">до 16% от дохода -- возврат</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Взносы</div>
+            <div class="detail-value">~18.5% от зарплаты</div>
+            <div class="detail-note">6% работник + 12.5% работодатель</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Ликвидность</div>
+            <div class="detail-value">Возраст 60+</div>
+            <div class="detail-note">кицба ходшит (ежемесячная)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Комиссии</div>
+            <div class="detail-value">0.2-0.5%/год</div>
+            <div class="detail-note">+ до 4% от взносов</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Включает</div>
+            <div class="detail-value">Страховку</div>
+            <div class="detail-note">жизнь + инвалидность</div>
+          </div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Преимущества</h4>
+            <ul>
+              <li>Налоговый возврат на взносы</li>
+              <li>Работодатель платит основную часть</li>
+              <li>Страховка жизни включена</li>
+              <li>Агрессивный трек = рост как S&P 500</li>
+            </ul>
+          </div>
+          <div class="cons"><h4>Недостатки</h4>
+            <ul>
+              <li>Заморожено до 60+</li>
+              <li>Выплата как рента, не единовременно</li>
+              <li>Сложная структура, трудно сравнивать</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bituach Menahalim -->
+    <div class="card" data-categories="tax,pension">
+      <div class="card-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-icon" style="background:var(--blue-soft);color:var(--blue)">&#9730;</div>
+        <div class="card-main">
+          <div class="card-name">Битуах Менаалим</div>
+          <div class="card-heb">ביטוח מנהלים</div>
+          <div class="card-tags">
+            <span class="tag tag-tax-benefit">Налоговые вычеты</span>
+            <span class="tag tag-risk-med">Риск: средний</span>
+            <span class="tag tag-locked">До 60+</span>
+          </div>
+        </div>
+        <div class="card-toggle"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="card-body">
+        <p>Страховой пенсионный полис (альтернатива керен пенсии). Популярен у менеджеров и высокооплачиваемых. Гарантирует фиксированную доходность в старых полисах. Новые -- рыночные.</p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-label">Доходность</div>
+            <div class="detail-value">4-8%/год</div>
+            <div class="detail-note">старые полисы: гарантия 4%+</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Налог</div>
+            <div class="detail-value" style="color:var(--blue)">Вычеты</div>
+            <div class="detail-note">похоже на пенсию</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Комиссии</div>
+            <div class="detail-value">0.5-1.5%/год</div>
+            <div class="detail-note">выше чем пенсия</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Ликвидность</div>
+            <div class="detail-value">Возраст 60+</div>
+            <div class="detail-note">можно единовременно (частично)</div>
+          </div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Преимущества</h4>
+            <ul>
+              <li>Старые полисы: гарантированная доходность</li>
+              <li>Можно получить часть единовременно</li>
+              <li>Страховка включена</li>
+            </ul>
+          </div>
+          <div class="cons"><h4>Недостатки</h4>
+            <ul>
+              <li>Комиссии выше пенсионного фонда</li>
+              <li>Новые полисы менее выгодны</li>
+              <li>Сложные условия, мелкий шрифт</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kupat Gemel -->
+    <div class="card" data-categories="tax,pension">
+      <div class="card-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-icon" style="background:var(--amber-soft);color:var(--amber)">&#9878;</div>
+        <div class="card-main">
+          <div class="card-name">Купат Гемель ле-Ашкаа</div>
+          <div class="card-heb">קופת גמל להשקעה</div>
+          <div class="card-tags">
+            <span class="tag tag-risk-med">Риск: средний</span>
+            <span class="tag tag-liquid">Ликвидный</span>
+          </div>
+        </div>
+        <div class="card-toggle"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="card-body">
+        <p>Инвестиционный провидент-фонд. Налог откладывается до снятия. Нет привязки к работодателю, можно вносить из любых средств. Лимит ~77,000 ILS/год.</p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-label">Доходность</div>
+            <div class="detail-value">6-10%/год</div>
+            <div class="detail-note">зависит от маслула</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Налог</div>
+            <div class="detail-value">25%</div>
+            <div class="detail-note">при снятии, но отложенный</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Лимит</div>
+            <div class="detail-value">~77,000 ILS/год</div>
+            <div class="detail-note">на человека</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Ликвидность</div>
+            <div class="detail-value">В любое время</div>
+            <div class="detail-note">но налог при снятии</div>
+          </div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Преимущества</h4>
+            <ul>
+              <li>Отложенный налог = больше сложных процентов</li>
+              <li>Гибкость -- не привязан к работодателю</li>
+              <li>В 60+ можно снять как рентовый доход</li>
+            </ul>
+          </div>
+          <div class="cons"><h4>Недостатки</h4>
+            <ul>
+              <li>25% налог при снятии (в отличие от хишталмут)</li>
+              <li>Комиссии могут быть высокие</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Keren Neemanut -->
+    <div class="card" data-categories="market,liquid">
+      <div class="card-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-icon" style="background:var(--green-soft);color:var(--green)">&#9670;</div>
+        <div class="card-main">
+          <div class="card-name">Керен Нееманут (Взаимный фонд)</div>
+          <div class="card-heb">קרן נאמנות</div>
+          <div class="card-tags">
+            <span class="tag tag-risk-med">Риск: средний</span>
+            <span class="tag tag-liquid">Ликвидный</span>
+          </div>
+        </div>
+        <div class="card-toggle"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="card-body">
+        <p>Классический взаимный фонд. Покупаете паи (yehidot hishtaatfut). Есть активно управляемые (менеджер выбирает акции) и пассивные (копируют индекс). Пассивные -- дешевле и обычно лучше.</p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-label">Доходность</div>
+            <div class="detail-value">5-12%/год</div>
+            <div class="detail-note">индексные ~10%, активные varies</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Налог</div>
+            <div class="detail-value">25%</div>
+            <div class="detail-note">mas revach hon при продаже</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Комиссии</div>
+            <div class="detail-value">0.03-1.5%/год</div>
+            <div class="detail-note">индексные 0.03-0.3%</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Ликвидность</div>
+            <div class="detail-value">T+2 дня</div>
+            <div class="detail-note">продать в любой день</div>
+          </div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Преимущества</h4>
+            <ul>
+              <li>Низкие комиссии (индексные)</li>
+              <li>Полная ликвидность</li>
+              <li>Большой выбор: S&P 500, TA-125, облигации</li>
+              <li>Нет ограничения суммы</li>
+            </ul>
+          </div>
+          <div class="cons"><h4>Недостатки</h4>
+            <ul>
+              <li>25% налог на прибыль</li>
+              <li>Нет налоговых льгот</li>
+              <li>Активные фонды часто проигрывают индексу</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ETF/ETN -->
+    <div class="card" data-categories="market,liquid">
+      <div class="card-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-icon" style="background:var(--green-soft);color:var(--green)">&#9650;</div>
+        <div class="card-main">
+          <div class="card-name">Теудат Сал / Керен Маакава (ETF/ETN)</div>
+          <div class="card-heb">תעודת סל / קרן מעקבת</div>
+          <div class="card-tags">
+            <span class="tag tag-risk-med">Риск: средний</span>
+            <span class="tag tag-liquid">Ликвидный</span>
+          </div>
+        </div>
+        <div class="card-toggle"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="card-body">
+        <p>Биржевые фонды, которые торгуются как обычные акции на TASE. Копируют индексы (S&P 500, NASDAQ, TA-125). Самый дешёвый способ инвестировать в индексы с полной ликвидностью.</p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-label">Доходность</div>
+            <div class="detail-value">= индексу</div>
+            <div class="detail-note">S&P 500 ~10%, TA-125 ~8%</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Налог</div>
+            <div class="detail-value">25%</div>
+            <div class="detail-note">при продаже</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Комиссии</div>
+            <div class="detail-value">0.03-0.2%/год</div>
+            <div class="detail-note">самые низкие на рынке</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Ликвидность</div>
+            <div class="detail-value">Мгновенная</div>
+            <div class="detail-note">торгуется как акция</div>
+          </div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Преимущества</h4>
+            <ul>
+              <li>Минимальные комиссии</li>
+              <li>Мгновенная ликвидность</li>
+              <li>Прозрачность -- видно что внутри</li>
+              <li>Можно купить в течение торгового дня</li>
+            </ul>
+          </div>
+          <div class="cons"><h4>Недостатки</h4>
+            <ul>
+              <li>25% налог на прибыль</li>
+              <li>Нужен тик ашкаот (счёт у брокера)</li>
+              <li>Соблазн торговать часто</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Direct Stocks -->
+    <div class="card" data-categories="market,liquid">
+      <div class="card-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-icon" style="background:var(--rose-soft);color:var(--rose)">&#9679;</div>
+        <div class="card-main">
+          <div class="card-name">Акции напрямую</div>
+          <div class="card-heb">מניות ישירות</div>
+          <div class="card-tags">
+            <span class="tag tag-risk-high">Риск: высокий</span>
+            <span class="tag tag-liquid">Ликвидный</span>
+          </div>
+        </div>
+        <div class="card-toggle"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="card-body">
+        <p>Покупка акций конкретных компаний через бейт ашкаот (IBI, Meitav, Excellance) или международный брокер (Interactive Brokers). TASE для израильских, NYSE/NASDAQ для американских.</p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-label">Доходность</div>
+            <div class="detail-value">-100% ... +∞</div>
+            <div class="detail-note">непредсказуемо</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Налог</div>
+            <div class="detail-value">25%</div>
+            <div class="detail-note">+ 25% US withholding на дивиденды (зачёт)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Комиссии</div>
+            <div class="detail-value">5-20 ILS/сделка</div>
+            <div class="detail-note">или % от суммы</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Ликвидность</div>
+            <div class="detail-value">Мгновенная</div>
+            <div class="detail-note">в торговые часы</div>
+          </div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Преимущества</h4>
+            <ul>
+              <li>Потенциально высокая доходность</li>
+              <li>Полный контроль</li>
+              <li>Дивиденды</li>
+            </ul>
+          </div>
+          <div class="cons"><h4>Недостатки</h4>
+            <ul>
+              <li>Высокий риск -- одна компания может обнулиться</li>
+              <li>80% частных инвесторов проигрывают индексу</li>
+              <li>Двойное налогообложение на US-акции</li>
+              <li>Эмоциональные решения</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Keren Kaspit -->
+    <div class="card" data-categories="safe,liquid">
+      <div class="card-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-icon" style="background:var(--accent-soft);color:var(--accent)">&#9673;</div>
+        <div class="card-main">
+          <div class="card-name">Керен Каспит (Денежный фонд)</div>
+          <div class="card-heb">קרן כספית</div>
+          <div class="card-tags">
+            <span class="tag tag-risk-low">Риск: минимальный</span>
+            <span class="tag tag-liquid">Ликвидный T+0</span>
+          </div>
+        </div>
+        <div class="card-toggle"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="card-body">
+        <p>Денежный фонд, инвестирующий в краткосрочные гособлигации (макам) и банковские депозиты. Доходность близка к ставке Банка Израиля. Идеально для подушки безопасности.</p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-label">Доходность</div>
+            <div class="detail-value">~4.5%/год</div>
+            <div class="detail-note">= ставка Банка Израиля</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Налог</div>
+            <div class="detail-value">25%</div>
+            <div class="detail-note">реальная доходность ~3.4%</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Комиссии</div>
+            <div class="detail-value">0.05-0.15%/год</div>
+            <div class="detail-note">минимальные</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Ликвидность</div>
+            <div class="detail-value">T+0</div>
+            <div class="detail-note">деньги в тот же день</div>
+          </div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Преимущества</h4>
+            <ul>
+              <li>Практически нулевой риск</li>
+              <li>Мгновенная ликвидность</li>
+              <li>Лучше банковского счёта по доходности</li>
+            </ul>
+          </div>
+          <div class="cons"><h4>Недостатки</h4>
+            <ul>
+              <li>Доходность едва обгоняет инфляцию</li>
+              <li>Не подходит для долгосрочных целей</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pikdon -->
+    <div class="card" data-categories="safe,liquid">
+      <div class="card-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-icon" style="background:var(--surface-alt);color:var(--text-muted)">&#9634;</div>
+        <div class="card-main">
+          <div class="card-name">Пикадон (Банковский депозит)</div>
+          <div class="card-heb">פיקדון</div>
+          <div class="card-tags">
+            <span class="tag tag-risk-low">Риск: нулевой</span>
+            <span class="tag tag-locked">Заморозка</span>
+          </div>
+        </div>
+        <div class="card-toggle"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="card-body">
+        <p>Срочный вклад в банке. Ставка фиксируется на период (месяц, 3 мес, год). Застрахован государством. Самый безопасный, но и самый низкодоходный инструмент.</p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-label">Доходность</div>
+            <div class="detail-value">3.5-4.5%/год</div>
+            <div class="detail-note">зависит от банка и срока</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Налог</div>
+            <div class="detail-value">25%</div>
+            <div class="detail-note">автоматически удерживается</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Ликвидность</div>
+            <div class="detail-value">По окончании срока</div>
+            <div class="detail-note">досрочно = штраф</div>
+          </div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Преимущества</h4>
+            <ul>
+              <li>Нулевой риск (госстрахование)</li>
+              <li>Предсказуемый доход</li>
+              <li>Простота -- никаких решений</li>
+            </ul>
+          </div>
+          <div class="cons"><h4>Недостатки</h4>
+            <ul>
+              <li>Доходность ниже инфляции после налога</li>
+              <li>Деньги заморожены на срок</li>
+              <li>Керен каспит обычно выгоднее</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bonds -->
+    <div class="card" data-categories="safe,market">
+      <div class="card-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-icon" style="background:var(--blue-soft);color:var(--blue)">&#9644;</div>
+        <div class="card-main">
+          <div class="card-name">Облигации (Агарот Хов)</div>
+          <div class="card-heb">אגרות חוב</div>
+          <div class="card-tags">
+            <span class="tag tag-risk-low">Риск: низкий-средний</span>
+            <span class="tag tag-liquid">Ликвидный</span>
+          </div>
+        </div>
+        <div class="card-toggle"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="card-body">
+        <p>Государственные (агах мемшалти) или корпоративные. Государственные бывают шекелевые (шахар), привязанные к индексу (галил), и в долларах. Корпоративные -- выше доходность, выше риск.</p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-label">Доходность</div>
+            <div class="detail-value">3-6%/год</div>
+            <div class="detail-note">гос ~4%, корпоративные ~5-6%</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Налог</div>
+            <div class="detail-value">25%</div>
+            <div class="detail-note">на купон и на разницу курса</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Защита от инфляции</div>
+            <div class="detail-value">Галил -- да</div>
+            <div class="detail-note">цамуд мадад = привязан к CPI</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Ликвидность</div>
+            <div class="detail-value">На бирже</div>
+            <div class="detail-note">можно продать в любой день</div>
+          </div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Преимущества</h4>
+            <ul>
+              <li>Стабильный предсказуемый доход</li>
+              <li>Галил защищает от инфляции</li>
+              <li>Гос. облигации -- почти нулевой риск</li>
+            </ul>
+          </div>
+          <div class="cons"><h4>Недостатки</h4>
+            <ul>
+              <li>Низкая доходность vs акции</li>
+              <li>Корпоративные могут дефолтнуть</li>
+              <li>Цена падает при росте ставки</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real Estate -->
+    <div class="card" data-categories="market">
+      <div class="card-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-icon" style="background:var(--amber-soft);color:var(--amber)">&#9962;</div>
+        <div class="card-main">
+          <div class="card-name">Недвижимость (Надлан)</div>
+          <div class="card-heb">נדל"ן</div>
+          <div class="card-tags">
+            <span class="tag tag-risk-med">Риск: средний</span>
+            <span class="tag tag-locked">Неликвидный</span>
+          </div>
+        </div>
+        <div class="card-toggle"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="card-body">
+        <p>Покупка квартиры для сдачи (dira le-hashkaa) или через фонды недвижимости (keren nadlan). Исторически цены в Израиле росли ~5-7%/год + арендный доход ~2-3%.</p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-label">Доходность</div>
+            <div class="detail-value">7-10%/год</div>
+            <div class="detail-note">рост цены ~5-7% + аренда ~2-3%</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Налог</div>
+            <div class="detail-value">Сложный</div>
+            <div class="detail-note">mas shevach + mas hachnasa на аренду</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Порог входа</div>
+            <div class="detail-value">500K-1.5M+ ILS</div>
+            <div class="detail-note">первоначальный взнос + машканта</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Ликвидность</div>
+            <div class="detail-value">Месяцы</div>
+            <div class="detail-note">продажа занимает 3-6 месяцев</div>
+          </div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Преимущества</h4>
+            <ul>
+              <li>Кредитное плечо (машканта)</li>
+              <li>Пассивный доход от аренды</li>
+              <li>Защита от инфляции</li>
+              <li>Психологически "надёжно"</li>
+            </ul>
+          </div>
+          <div class="cons"><h4>Недостатки</h4>
+            <ul>
+              <li>Огромный порог входа</li>
+              <li>Неликвидность</li>
+              <li>Налоги: mas shevach на вторую квартиру ~25%</li>
+              <li>Головная боль: ремонт, жильцы, ваад</li>
+              <li>Концентрация риска в одном активе</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crypto -->
+    <div class="card" data-categories="market">
+      <div class="card-header" tabindex="0" role="button" aria-expanded="false">
+        <div class="card-icon" style="background:var(--rose-soft);color:var(--rose)">&#9830;</div>
+        <div class="card-main">
+          <div class="card-name">Криптовалюта</div>
+          <div class="card-heb">מטבעות קריפטו</div>
+          <div class="card-tags">
+            <span class="tag tag-risk-high">Риск: очень высокий</span>
+            <span class="tag tag-liquid">Ликвидный</span>
+          </div>
+        </div>
+        <div class="card-toggle"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <div class="card-body">
+        <p>Bitcoin, Ethereum и другие. В Израиле облагается налогом как имущество. Можно покупать через израильских провайдеров (Bits of Gold) или международные биржи.</p>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-label">Доходность</div>
+            <div class="detail-value">Непредсказуема</div>
+            <div class="detail-note">BTC: -73% в 2022, +160% в 2023</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Налог</div>
+            <div class="detail-value">25%</div>
+            <div class="detail-note">mas revach hon, нужно отчитываться</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Регуляция</div>
+            <div class="detail-value">Минимальная</div>
+            <div class="detail-note">банки часто создают проблемы</div>
+          </div>
+        </div>
+        <div class="pros-cons">
+          <div class="pros"><h4>Преимущества</h4>
+            <ul>
+              <li>Потенциально высокая доходность</li>
+              <li>Декорреляция с традиционными рынками</li>
+              <li>24/7 ликвидность</li>
+            </ul>
+          </div>
+          <div class="cons"><h4>Недостатки</h4>
+            <ul>
+              <li>Экстремальная волатильность</li>
+              <li>Банки могут заблокировать переводы</li>
+              <li>Сложная налоговая отчётность</li>
+              <li>Риск потери (взломы, забытые пароли)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cards -->
+
+  <!-- Comparison Table -->
+  <h2 class="section-title">Сравнительная таблица</h2>
+  <p class="section-desc">Все инструменты в одной таблице. Доходность указана до налогов, средняя за последние 10-20 лет.</p>
+
+  <div class="table-wrap">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Инструмент</th>
+          <th>Доходность</th>
+          <th>Налог</th>
+          <th>Риск</th>
+          <th>Ликвидность</th>
+          <th>Комиссии</th>
+          <th>Мин. сумма</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Керен Хишталмут</td>
+          <td>7-10%</td>
+          <td class="val-good">0%</td>
+          <td class="val-mid">Средний</td>
+          <td>6 лет</td>
+          <td>0.3-1.2%</td>
+          <td>Через работу</td>
+        </tr>
+        <tr>
+          <td>Керен Пенсия</td>
+          <td>5-10%</td>
+          <td class="val-good">Вычеты</td>
+          <td class="val-mid">Средний</td>
+          <td>60+</td>
+          <td>0.2-0.5%</td>
+          <td>Через работу</td>
+        </tr>
+        <tr>
+          <td>Битуах Менаалим</td>
+          <td>4-8%</td>
+          <td class="val-good">Вычеты</td>
+          <td class="val-mid">Средний</td>
+          <td>60+</td>
+          <td>0.5-1.5%</td>
+          <td>Через работу</td>
+        </tr>
+        <tr>
+          <td>Купат Гемель</td>
+          <td>6-10%</td>
+          <td class="val-mid">25% отлож.</td>
+          <td class="val-mid">Средний</td>
+          <td>Свободная</td>
+          <td>0.3-1%</td>
+          <td>Любая</td>
+        </tr>
+        <tr>
+          <td>Керен Нееманут</td>
+          <td>5-12%</td>
+          <td class="val-bad">25%</td>
+          <td class="val-mid">Средний</td>
+          <td>T+2</td>
+          <td>0.03-1.5%</td>
+          <td>Любая</td>
+        </tr>
+        <tr>
+          <td>ETF/ETN</td>
+          <td>= индексу</td>
+          <td class="val-bad">25%</td>
+          <td class="val-mid">Средний</td>
+          <td>Мгновенная</td>
+          <td>0.03-0.2%</td>
+          <td>Цена 1 пая</td>
+        </tr>
+        <tr>
+          <td>Акции</td>
+          <td>-100...+∞</td>
+          <td class="val-bad">25%</td>
+          <td class="val-bad">Высокий</td>
+          <td>Мгновенная</td>
+          <td>5-20₪/сделка</td>
+          <td>Цена 1 акции</td>
+        </tr>
+        <tr>
+          <td>Керен Каспит</td>
+          <td>~4.5%</td>
+          <td class="val-bad">25%</td>
+          <td class="val-good">Минимальный</td>
+          <td>T+0</td>
+          <td>0.05-0.15%</td>
+          <td>Любая</td>
+        </tr>
+        <tr>
+          <td>Пикадон</td>
+          <td>3.5-4.5%</td>
+          <td class="val-bad">25%</td>
+          <td class="val-good">Нулевой</td>
+          <td>По сроку</td>
+          <td>0%</td>
+          <td>Любая</td>
+        </tr>
+        <tr>
+          <td>Облигации</td>
+          <td>3-6%</td>
+          <td class="val-bad">25%</td>
+          <td class="val-good">Низкий</td>
+          <td>На бирже</td>
+          <td>Как акции</td>
+          <td>Цена 1 облигации</td>
+        </tr>
+        <tr>
+          <td>Недвижимость</td>
+          <td>7-10%</td>
+          <td class="val-bad">~25%+</td>
+          <td class="val-mid">Средний</td>
+          <td>Месяцы</td>
+          <td>Высокие</td>
+          <td>500K+ ILS</td>
+        </tr>
+        <tr>
+          <td>Крипто</td>
+          <td>???</td>
+          <td class="val-bad">25%</td>
+          <td class="val-bad">Очень высокий</td>
+          <td>24/7</td>
+          <td>0.1-1%/сделка</td>
+          <td>Любая</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Optimal strategy -->
+  <h2 class="section-title">Оптимальная стратегия</h2>
+  <p class="section-desc">Порядок заполнения инвестиционных "вёдер" от самого выгодного к наименее.</p>
+
+  <div class="card open" style="border-left:3px solid var(--accent)">
+    <div class="card-body" style="display:block;padding:1.25rem 1.5rem">
+      <div class="detail-grid" style="grid-template-columns:auto 1fr;gap:0.75rem 1.25rem">
+        <div class="detail-item" style="text-align:center;min-width:36px;padding:0.5rem"><div class="detail-value" style="color:var(--accent);font-size:1.25rem">1</div></div>
+        <div class="detail-item"><div class="detail-label">Подушка безопасности</div><div class="detail-value">Керен Каспит</div><div class="detail-note">3-6 месячных расходов. Не инвестиция, а страховка. Всегда первым делом.</div></div>
+
+        <div class="detail-item" style="text-align:center;min-width:36px;padding:0.5rem"><div class="detail-value" style="color:var(--accent);font-size:1.25rem">2</div></div>
+        <div class="detail-item"><div class="detail-label">Максимизировать бесплатные деньги</div><div class="detail-value">Керен Хишталмут</div><div class="detail-note">0% налог. Работодатель добавляет 7.5%. Ничто на рынке не даёт таких условий. Заполнять до лимита.</div></div>
+
+        <div class="detail-item" style="text-align:center;min-width:36px;padding:0.5rem"><div class="detail-value" style="color:var(--accent);font-size:1.25rem">3</div></div>
+        <div class="detail-item"><div class="detail-label">Пенсия на агрессивном треке</div><div class="detail-value">Керен Пенсия (маслул мениот)</div><div class="detail-note">Выбрать маслул с максимальной долей акций. Вы молоды -- пенсия через десятки лет. Налоговые вычеты -- бонус.</div></div>
+
+        <div class="detail-item" style="text-align:center;min-width:36px;padding:0.5rem"><div class="detail-value" style="color:var(--accent);font-size:1.25rem">4</div></div>
+        <div class="detail-item"><div class="detail-label">Отложенный налог</div><div class="detail-value">Купат Гемель ле-Ашкаа</div><div class="detail-note">Если хишталмут заполнен, а деньги остались -- отложенный налог лучше, чем немедленный 25%.</div></div>
+
+        <div class="detail-item" style="text-align:center;min-width:36px;padding:0.5rem"><div class="detail-value" style="color:var(--accent);font-size:1.25rem">5</div></div>
+        <div class="detail-item"><div class="detail-label">Свободные деньги</div><div class="detail-value">ETF/Керен Нееманут на S&P 500</div><div class="detail-note">Всё остальное -- в дешёвый индексный фонд. Комиссии &lt;0.2%. Долгосрочно. Не трогать.</div></div>
+
+        <div class="detail-item" style="text-align:center;min-width:36px;padding:0.5rem"><div class="detail-value" style="color:var(--text-faint);font-size:1.25rem">?</div></div>
+        <div class="detail-item"><div class="detail-label">По желанию (малая часть)</div><div class="detail-value">Акции / Крипто</div><div class="detail-note">Максимум 5-10% портфеля. "Игровые деньги". Если потеряете -- не повлияет на жизнь.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="footnote">Данные актуальны на 2024-2025. Налоговые ставки и лимиты могут меняться. Для персональных решений консультируйтесь с лицензированным финансовым советником (yoetz mashkaot). Этот документ носит образовательный характер и не является финансовой рекомендацией.</p>
+</div>
+
+<script>
+document.querySelectorAll('.card-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const card = header.closest('.card');
+    const isOpen = card.classList.contains('open');
+    card.classList.toggle('open');
+    header.setAttribute('aria-expanded', !isOpen);
+  });
+  header.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      header.click();
+    }
+  });
+});
+
+document.querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const filter = chip.dataset.filter;
+    document.querySelectorAll('#cards .card').forEach(card => {
+      if (filter === 'all') {
+        card.style.display = '';
+      } else {
+        const cats = (card.dataset.categories || '').split(',');
+        card.style.display = cats.includes(filter) ? '' : 'none';
+      }
+    });
+  });
+});
+</script>
