@@ -424,6 +424,146 @@ canvas {
   font-variant-numeric: tabular-nums;
 }
 
+.income-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .income-grid { grid-template-columns: 1fr; }
+}
+
+.income-card {
+  border-radius: 8px;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  position: relative;
+  overflow: hidden;
+}
+
+.income-card .strategy-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.125rem;
+}
+
+.income-card .strategy-rate {
+  font-size: 0.6875rem;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+}
+
+.income-card .monthly-income {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.125rem;
+}
+
+.income-card .per-month {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+
+.income-card .annual-income {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.375rem;
+}
+
+.income-card .lifestyle-tag {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.2rem 0.625rem;
+  border-radius: 100px;
+  margin-top: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+.lifestyle-modest {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+.lifestyle-comfortable {
+  background: var(--green-soft);
+  color: var(--green);
+}
+.lifestyle-luxury {
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+.lifestyle-royalty {
+  background: var(--coral-soft);
+  color: var(--coral);
+}
+
+.income-card .capital-note {
+  font-size: 0.6875rem;
+  color: var(--text-faint);
+  margin-top: 0.5rem;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+.lifestyle-scale {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.lifestyle-scale .scale-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+}
+
+.scale-bar {
+  position: relative;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--surface-alt);
+  overflow: visible;
+  margin-bottom: 0.5rem;
+}
+
+.scale-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.scale-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.625rem;
+  color: var(--text-faint);
+  margin-top: 0.25rem;
+}
+
+.scale-marker {
+  position: absolute;
+  top: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+  box-shadow: var(--shadow);
+  transform: translateX(-50%);
+  transition: left 0.4s ease;
+}
+
 .disclaimer {
   margin-top: 2rem;
   font-size: 0.75rem;
@@ -465,10 +605,10 @@ canvas {
       <div class="input-group">
         <label for="years">Investment Horizon</label>
         <div class="input-row">
-          <input type="number" id="years" value="20" min="1" max="50" step="1">
+          <input type="number" id="years" value="30" min="1" max="50" step="1">
           <span class="unit">years</span>
         </div>
-        <input type="range" id="years-slider" min="1" max="50" step="1" value="20">
+        <input type="range" id="years-slider" min="1" max="50" step="1" value="30">
       </div>
     </div>
   </div>
@@ -494,6 +634,15 @@ canvas {
   <div class="panel">
     <div class="panel-label">Summary</div>
     <div class="summary-row" id="summary"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-label">Monthly Retirement Income</div>
+    <p style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:1.25rem;max-width:56ch;">
+      After your investment horizon ends, here's what you could withdraw each month under different strategies, based on the <strong>moderate 10%</strong> scenario.
+    </p>
+    <div class="income-grid" id="income-cards"></div>
+    <div class="lifestyle-scale" id="lifestyle-scale"></div>
   </div>
 
   <div class="panel">
@@ -726,10 +875,88 @@ function drawChart(initial, monthly, years) {
   }
 }
 
+const withdrawalStrategies = [
+  {
+    name: 'Dividends Only',
+    rate: 0.015,
+    note: 'S&P 500 dividend yield ~1.5%. Capital untouched, grows forever.'
+  },
+  {
+    name: 'Safe Withdrawal (4% Rule)',
+    rate: 0.04,
+    note: 'Classic retirement rule. High probability capital lasts 30+ years.'
+  },
+  {
+    name: 'Moderate Withdrawal',
+    rate: 0.05,
+    note: '5% annual. Some risk of depletion over 25-30 years.'
+  },
+  {
+    name: 'Living Off Returns',
+    rate: 0.07,
+    note: 'Spending most real returns. Capital may erode with inflation.'
+  }
+];
+
+function getLifestyle(monthlyILS) {
+  if (monthlyILS >= 60000) return { label: 'Royalty', cls: 'lifestyle-royalty' };
+  if (monthlyILS >= 35000) return { label: 'Luxury', cls: 'lifestyle-luxury' };
+  if (monthlyILS >= 18000) return { label: 'Comfortable', cls: 'lifestyle-comfortable' };
+  return { label: 'Modest', cls: 'lifestyle-modest' };
+}
+
+function renderIncome(initial, monthly, years) {
+  const modTimeline = calcTimeline(initial, monthly, years, 0.10);
+  const portfolio = modTimeline[modTimeline.length - 1].value;
+
+  const container = document.getElementById('income-cards');
+  container.innerHTML = withdrawalStrategies.map(s => {
+    const annualIncome = portfolio * s.rate;
+    const monthlyIncome = annualIncome / 12;
+    const life = getLifestyle(monthlyIncome);
+    return `
+      <div class="income-card">
+        <div class="strategy-name">${s.name}</div>
+        <div class="strategy-rate">${(s.rate * 100).toFixed(1)}% annual withdrawal</div>
+        <div class="monthly-income">${fmt(monthlyIncome)} ILS</div>
+        <div class="per-month">per month</div>
+        <div class="annual-income">${fmt(annualIncome)} ILS / year</div>
+        <span class="lifestyle-tag ${life.cls}">${life.label}</span>
+        <div class="capital-note">${s.note}</div>
+      </div>`;
+  }).join('');
+
+  const safeMonthly = (portfolio * 0.04) / 12;
+  const life = getLifestyle(safeMonthly);
+  const pct = Math.min(100, (safeMonthly / 80000) * 100);
+
+  let fillColor;
+  if (life.cls === 'lifestyle-royalty') fillColor = 'var(--coral)';
+  else if (life.cls === 'lifestyle-luxury') fillColor = 'var(--gold)';
+  else if (life.cls === 'lifestyle-comfortable') fillColor = 'var(--green)';
+  else fillColor = 'var(--blue)';
+
+  const scaleEl = document.getElementById('lifestyle-scale');
+  scaleEl.innerHTML = `
+    <div class="scale-label">Your lifestyle level (4% Rule, Moderate Scenario)</div>
+    <div class="scale-bar">
+      <div class="scale-fill" style="width:${pct}%;background:${fillColor}"></div>
+      <div class="scale-marker" style="left:${pct}%;background:${fillColor}"></div>
+    </div>
+    <div class="scale-ticks">
+      <span>0</span>
+      <span>20K</span>
+      <span>40K</span>
+      <span>60K</span>
+      <span>80K+ ILS/mo</span>
+    </div>`;
+}
+
 function update() {
   const { initial, monthly, years } = getInputs();
   renderResults(initial, monthly, years);
   renderSummary(initial, monthly, years);
+  renderIncome(initial, monthly, years);
   renderTable(initial, monthly, years);
   drawChart(initial, monthly, years);
 }
