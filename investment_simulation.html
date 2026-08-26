@@ -1,0 +1,753 @@
+<title>S&P 500 Investment Simulator</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root {
+  --bg: #F7F3EC;
+  --surface: #FFFFFF;
+  --surface-alt: #EDE8DF;
+  --border: #D8D0C4;
+  --text: #2C3340;
+  --text-muted: #6B7280;
+  --text-faint: #9CA3AF;
+  --navy: #1B2A4A;
+  --gold: #C8A44E;
+  --gold-soft: rgba(200,164,78,0.12);
+  --green: #3D8B6E;
+  --green-soft: rgba(61,139,110,0.1);
+  --coral: #C4624E;
+  --coral-soft: rgba(196,98,78,0.1);
+  --blue: #4A7AB5;
+  --blue-soft: rgba(74,122,181,0.1);
+  --chart-line-1: #3D8B6E;
+  --chart-line-2: #C8A44E;
+  --chart-line-3: #C4624E;
+  --chart-grid: rgba(44,51,64,0.08);
+  --chart-fill-1: rgba(61,139,110,0.08);
+  --chart-fill-2: rgba(200,164,78,0.06);
+  --chart-fill-3: rgba(196,98,78,0.05);
+  --input-bg: #FFFFFF;
+  --input-border: #D8D0C4;
+  --slider-track: #D8D0C4;
+  --slider-thumb: #1B2A4A;
+  --shadow: 0 1px 3px rgba(27,42,74,0.06), 0 1px 2px rgba(27,42,74,0.04);
+  --shadow-lg: 0 4px 12px rgba(27,42,74,0.08), 0 2px 4px rgba(27,42,74,0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1419;
+    --surface: #1A2332;
+    --surface-alt: #1F2B3A;
+    --border: #2A3A4E;
+    --text: #E4E8ED;
+    --text-muted: #8B95A5;
+    --text-faint: #5A6578;
+    --navy: #A8BDD9;
+    --gold: #D4B35E;
+    --gold-soft: rgba(212,179,94,0.12);
+    --green: #5AAF8E;
+    --green-soft: rgba(90,175,142,0.1);
+    --coral: #E07A66;
+    --coral-soft: rgba(224,122,102,0.1);
+    --blue: #6B9AD4;
+    --blue-soft: rgba(107,154,212,0.1);
+    --chart-line-1: #5AAF8E;
+    --chart-line-2: #D4B35E;
+    --chart-line-3: #E07A66;
+    --chart-grid: rgba(228,232,237,0.06);
+    --chart-fill-1: rgba(90,175,142,0.1);
+    --chart-fill-2: rgba(212,179,94,0.08);
+    --chart-fill-3: rgba(224,122,102,0.06);
+    --input-bg: #1F2B3A;
+    --input-border: #2A3A4E;
+    --slider-track: #2A3A4E;
+    --slider-thumb: #6B9AD4;
+    --shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.15);
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.15);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0F1419;
+  --surface: #1A2332;
+  --surface-alt: #1F2B3A;
+  --border: #2A3A4E;
+  --text: #E4E8ED;
+  --text-muted: #8B95A5;
+  --text-faint: #5A6578;
+  --navy: #A8BDD9;
+  --gold: #D4B35E;
+  --gold-soft: rgba(212,179,94,0.12);
+  --green: #5AAF8E;
+  --green-soft: rgba(90,175,142,0.1);
+  --coral: #E07A66;
+  --coral-soft: rgba(224,122,102,0.1);
+  --blue: #6B9AD4;
+  --blue-soft: rgba(107,154,212,0.1);
+  --chart-line-1: #5AAF8E;
+  --chart-line-2: #D4B35E;
+  --chart-line-3: #E07A66;
+  --chart-grid: rgba(228,232,237,0.06);
+  --chart-fill-1: rgba(90,175,142,0.1);
+  --chart-fill-2: rgba(212,179,94,0.08);
+  --chart-fill-3: rgba(224,122,102,0.06);
+  --input-bg: #1F2B3A;
+  --input-border: #2A3A4E;
+  --slider-track: #2A3A4E;
+  --slider-thumb: #6B9AD4;
+  --shadow: 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.15);
+  --shadow-lg: 0 4px 12px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+@media (max-width: 640px) {
+  .page { padding: 1.5rem 1rem 3rem; }
+}
+
+header {
+  margin-bottom: 2.5rem;
+}
+
+header h1 {
+  font-family: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 1.2;
+  text-wrap: balance;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  max-width: 52ch;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+}
+
+.panel + .panel { margin-top: 1.25rem; }
+
+.panel-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  margin-bottom: 1.25rem;
+}
+
+.inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.input-row input[type="number"] {
+  flex: 1;
+  min-width: 0;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  padding: 0.625rem 0.75rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  transition: border-color 0.15s;
+}
+
+.input-row input[type="number"]:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-soft);
+}
+
+.input-row .unit {
+  font-size: 0.8125rem;
+  color: var(--text-faint);
+  font-weight: 500;
+  white-space: nowrap;
+  min-width: 2.5rem;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--slider-track);
+  outline: none;
+  margin-top: 0.5rem;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--slider-thumb);
+  cursor: pointer;
+  border: 2px solid var(--surface);
+  box-shadow: var(--shadow);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--slider-thumb);
+  cursor: pointer;
+  border: 2px solid var(--surface);
+  box-shadow: var(--shadow);
+}
+
+input[type="range"]:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px var(--gold-soft);
+}
+
+.results-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .results-row { grid-template-columns: 1fr; }
+}
+
+.result-card {
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-align: center;
+  position: relative;
+}
+
+.result-card.conservative {
+  background: var(--green-soft);
+  border: 1px solid var(--green);
+  border-opacity: 0.2;
+}
+.result-card.moderate {
+  background: var(--gold-soft);
+  border: 1px solid var(--gold);
+}
+.result-card.optimistic {
+  background: var(--coral-soft);
+  border: 1px solid var(--coral);
+}
+
+.result-card .scenario-name {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.125rem;
+}
+
+.result-card.conservative .scenario-name { color: var(--green); }
+.result-card.moderate .scenario-name { color: var(--gold); }
+.result-card.optimistic .scenario-name { color: var(--coral); }
+
+.result-card .rate {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.result-card .value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(1.25rem, 3vw, 1.625rem);
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.25rem;
+}
+
+.result-card .gain {
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.result-card.conservative .gain { color: var(--green); }
+.result-card.moderate .gain { color: var(--gold); }
+.result-card.optimistic .gain { color: var(--coral); }
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2.2 / 1;
+  min-height: 280px;
+}
+
+@media (max-width: 640px) {
+  .chart-container { aspect-ratio: 1.5 / 1; min-height: 240px; }
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.breakdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.breakdown-table thead th {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  text-align: right;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.breakdown-table thead th:first-child { text-align: left; }
+
+.breakdown-table tbody td {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.875rem;
+  padding: 0.625rem 0.75rem;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.breakdown-table tbody td:first-child {
+  text-align: left;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.breakdown-table tbody tr:last-child td {
+  border-bottom: none;
+  font-weight: 600;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.summary-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.summary-stat {
+  text-align: center;
+  padding: 0.75rem;
+}
+
+.summary-stat .stat-label {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25rem;
+}
+
+.summary-stat .stat-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.disclaimer {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  line-height: 1.5;
+  max-width: 65ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+
+<div class="page">
+  <header>
+    <h1>S&P 500 Investment Simulation</h1>
+    <p>Compound growth projection for a lump-sum investment with recurring monthly contributions, modeled across three return scenarios.</p>
+  </header>
+
+  <div class="panel">
+    <div class="panel-label">Parameters</div>
+    <div class="inputs-grid">
+      <div class="input-group">
+        <label for="initial">Initial Investment</label>
+        <div class="input-row">
+          <input type="number" id="initial" value="300000" min="0" max="50000000" step="1000">
+          <span class="unit">ILS</span>
+        </div>
+        <input type="range" id="initial-slider" min="0" max="2000000" step="10000" value="300000">
+      </div>
+      <div class="input-group">
+        <label for="monthly">Monthly Contribution</label>
+        <div class="input-row">
+          <input type="number" id="monthly" value="1000" min="0" max="100000" step="100">
+          <span class="unit">ILS</span>
+        </div>
+        <input type="range" id="monthly-slider" min="0" max="20000" step="100" value="1000">
+      </div>
+      <div class="input-group">
+        <label for="years">Investment Horizon</label>
+        <div class="input-row">
+          <input type="number" id="years" value="20" min="1" max="50" step="1">
+          <span class="unit">years</span>
+        </div>
+        <input type="range" id="years-slider" min="1" max="50" step="1" value="20">
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-label">Projected Portfolio Value</div>
+    <div class="results-row" id="results"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-label">Growth Over Time</div>
+    <div class="chart-container">
+      <canvas id="chart"></canvas>
+    </div>
+    <div class="chart-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--chart-line-1)"></div> Conservative 7%</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--chart-line-2)"></div> Moderate 10%</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--chart-line-3)"></div> Optimistic 12%</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--text-faint)"></div> Total Deposited</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-label">Summary</div>
+    <div class="summary-row" id="summary"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-label">Year-by-Year Breakdown (Moderate 10%)</div>
+    <div class="table-wrap">
+      <table class="breakdown-table" id="breakdown"></table>
+    </div>
+  </div>
+
+  <p class="disclaimer">
+    This simulation uses fixed annual return rates compounded monthly. Actual S&P 500 returns vary year to year and can be negative. Historical average annual return (1928-2024) is approximately 10-11% nominal. Past performance does not guarantee future results. Currency exchange rate fluctuations between ILS and USD are not accounted for. This is for illustrative purposes only and does not constitute financial advice.
+  </p>
+</div>
+
+<script>
+const scenarios = [
+  { name: 'Conservative', rate: 0.07, cls: 'conservative' },
+  { name: 'Moderate',     rate: 0.10, cls: 'moderate' },
+  { name: 'Optimistic',   rate: 0.12, cls: 'optimistic' }
+];
+
+function fmt(n) {
+  return new Intl.NumberFormat('en-IL', { maximumFractionDigits: 0 }).format(Math.round(n));
+}
+
+function fmtPct(n) {
+  return (n * 100).toFixed(1) + '%';
+}
+
+function calcTimeline(initial, monthly, years, rate) {
+  const monthlyRate = rate / 12;
+  const months = years * 12;
+  const timeline = [{ year: 0, value: initial, deposited: initial }];
+  let value = initial;
+  let deposited = initial;
+  for (let m = 1; m <= months; m++) {
+    value = value * (1 + monthlyRate) + monthly;
+    deposited += monthly;
+    if (m % 12 === 0) {
+      timeline.push({ year: m / 12, value, deposited });
+    }
+  }
+  return timeline;
+}
+
+function getInputs() {
+  return {
+    initial: Math.max(0, Number(document.getElementById('initial').value) || 0),
+    monthly: Math.max(0, Number(document.getElementById('monthly').value) || 0),
+    years: Math.max(1, Math.min(50, Number(document.getElementById('years').value) || 20))
+  };
+}
+
+function renderResults(initial, monthly, years) {
+  const totalDeposited = initial + monthly * years * 12;
+  const container = document.getElementById('results');
+  container.innerHTML = scenarios.map(s => {
+    const timeline = calcTimeline(initial, monthly, years, s.rate);
+    const finalVal = timeline[timeline.length - 1].value;
+    const gain = finalVal - totalDeposited;
+    const mult = finalVal / totalDeposited;
+    return `
+      <div class="result-card ${s.cls}">
+        <div class="scenario-name">${s.name}</div>
+        <div class="rate">${(s.rate * 100).toFixed(0)}% annual return</div>
+        <div class="value">${fmt(finalVal)} ILS</div>
+        <div class="gain">+${fmt(gain)} (${mult.toFixed(1)}x)</div>
+      </div>`;
+  }).join('');
+}
+
+function renderSummary(initial, monthly, years) {
+  const totalDeposited = initial + monthly * years * 12;
+  const modTimeline = calcTimeline(initial, monthly, years, 0.10);
+  const modFinal = modTimeline[modTimeline.length - 1].value;
+  const container = document.getElementById('summary');
+  container.innerHTML = `
+    <div class="summary-stat">
+      <div class="stat-label">Total Deposited</div>
+      <div class="stat-value">${fmt(totalDeposited)} ILS</div>
+    </div>
+    <div class="summary-stat">
+      <div class="stat-label">Monthly Contributions</div>
+      <div class="stat-value">${fmt(monthly * years * 12)} ILS</div>
+    </div>
+    <div class="summary-stat">
+      <div class="stat-label">Interest Earned (10%)</div>
+      <div class="stat-value">${fmt(modFinal - totalDeposited)} ILS</div>
+    </div>
+    <div class="summary-stat">
+      <div class="stat-label">Growth Multiple (10%)</div>
+      <div class="stat-value">${(modFinal / totalDeposited).toFixed(2)}x</div>
+    </div>`;
+}
+
+function renderTable(initial, monthly, years) {
+  const timeline = calcTimeline(initial, monthly, years, 0.10);
+  const table = document.getElementById('breakdown');
+  let html = `<thead><tr>
+    <th>Year</th><th>Deposited</th><th>Portfolio Value</th><th>Interest Earned</th><th>Growth</th>
+  </tr></thead><tbody>`;
+  for (const row of timeline) {
+    const interest = row.value - row.deposited;
+    const growth = row.deposited > 0 ? ((row.value / row.deposited - 1) * 100).toFixed(1) + '%' : '0%';
+    html += `<tr>
+      <td>${row.year === 0 ? 'Start' : row.year}</td>
+      <td>${fmt(row.deposited)}</td>
+      <td>${fmt(row.value)}</td>
+      <td>${fmt(interest)}</td>
+      <td>${growth}</td>
+    </tr>`;
+  }
+  html += '</tbody>';
+  table.innerHTML = html;
+}
+
+function drawChart(initial, monthly, years) {
+  const canvas = document.getElementById('chart');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  const W = rect.width;
+  const H = rect.height;
+
+  const cs = getComputedStyle(document.documentElement);
+  const colors = [
+    cs.getPropertyValue('--chart-line-1').trim(),
+    cs.getPropertyValue('--chart-line-2').trim(),
+    cs.getPropertyValue('--chart-line-3').trim()
+  ];
+  const fills = [
+    cs.getPropertyValue('--chart-fill-1').trim(),
+    cs.getPropertyValue('--chart-fill-2').trim(),
+    cs.getPropertyValue('--chart-fill-3').trim()
+  ];
+  const gridColor = cs.getPropertyValue('--chart-grid').trim();
+  const textColor = cs.getPropertyValue('--text-muted').trim();
+  const faintColor = cs.getPropertyValue('--text-faint').trim();
+
+  const pad = { top: 20, right: 20, bottom: 36, left: 72 };
+  const cw = W - pad.left - pad.right;
+  const ch = H - pad.top - pad.bottom;
+
+  const allTimelines = scenarios.map(s => calcTimeline(initial, monthly, years, s.rate));
+  const depositLine = calcTimeline(initial, monthly, years, 0);
+
+  const maxVal = Math.max(...allTimelines.map(t => t[t.length - 1].value));
+  const niceMax = Math.ceil(maxVal / (10 ** Math.floor(Math.log10(maxVal)))) * (10 ** Math.floor(Math.log10(maxVal)));
+
+  function x(yr) { return pad.left + (yr / years) * cw; }
+  function y(val) { return pad.top + ch - (val / niceMax) * ch; }
+
+  ctx.clearRect(0, 0, W, H);
+
+  const gridLines = 5;
+  ctx.font = '11px "IBM Plex Mono", monospace';
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let i = 0; i <= gridLines; i++) {
+    const val = (niceMax / gridLines) * i;
+    const yy = y(val);
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(pad.left, yy);
+    ctx.lineTo(W - pad.right, yy);
+    ctx.stroke();
+    ctx.fillStyle = textColor;
+    if (val >= 1000000) {
+      ctx.fillText((val / 1000000).toFixed(1) + 'M', pad.left - 8, yy);
+    } else {
+      ctx.fillText(fmt(val / 1000) + 'K', pad.left - 8, yy);
+    }
+  }
+
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  const xStep = years <= 10 ? 1 : years <= 25 ? 5 : 10;
+  for (let yr = 0; yr <= years; yr += xStep) {
+    ctx.fillStyle = textColor;
+    ctx.fillText(yr === 0 ? 'Now' : yr + 'y', x(yr), H - pad.bottom + 10);
+  }
+
+  // deposit baseline
+  ctx.setLineDash([4, 4]);
+  ctx.strokeStyle = faintColor;
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  for (const pt of depositLine) {
+    const px = x(pt.year); const py = y(pt.value);
+    pt === depositLine[0] ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // scenario fills and lines (draw from back to front: optimistic, moderate, conservative)
+  for (let i = allTimelines.length - 1; i >= 0; i--) {
+    const tl = allTimelines[i];
+    // fill
+    ctx.fillStyle = fills[i];
+    ctx.beginPath();
+    ctx.moveTo(x(0), y(0));
+    for (const pt of tl) ctx.lineTo(x(pt.year), y(pt.value));
+    ctx.lineTo(x(years), y(0));
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  for (let i = allTimelines.length - 1; i >= 0; i--) {
+    const tl = allTimelines[i];
+    ctx.strokeStyle = colors[i];
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    for (const pt of tl) {
+      const px = x(pt.year); const py = y(pt.value);
+      pt === tl[0] ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+    }
+    ctx.stroke();
+
+    // endpoint dot
+    const last = tl[tl.length - 1];
+    ctx.fillStyle = colors[i];
+    ctx.beginPath();
+    ctx.arc(x(last.year), y(last.value), 4, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function update() {
+  const { initial, monthly, years } = getInputs();
+  renderResults(initial, monthly, years);
+  renderSummary(initial, monthly, years);
+  renderTable(initial, monthly, years);
+  drawChart(initial, monthly, years);
+}
+
+function syncPair(inputId, sliderId) {
+  const input = document.getElementById(inputId);
+  const slider = document.getElementById(sliderId);
+  input.addEventListener('input', () => { slider.value = input.value; update(); });
+  slider.addEventListener('input', () => { input.value = slider.value; update(); });
+}
+
+syncPair('initial', 'initial-slider');
+syncPair('monthly', 'monthly-slider');
+syncPair('years', 'years-slider');
+
+window.addEventListener('resize', () => drawChart(
+  getInputs().initial, getInputs().monthly, getInputs().years
+));
+
+update();
+</script>
